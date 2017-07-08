@@ -46,8 +46,8 @@ module.exports = function() {
                     } ,
                     sb: {
 //                      host: 'bpm12c',
-                      host: 'osb.iot',
-                      port:'8021'
+                      host: 'new.soa.digitalpracticespain.com',
+                      port:'8001'
                     }
                   };
 
