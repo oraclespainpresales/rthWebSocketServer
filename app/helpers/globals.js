@@ -15,7 +15,7 @@ module.exports = function() {
 
   global.STARTUPTIME    = "";
   global.DATETIMEFORMAT = 'DD/MM/YYYY HH:mm:ss.SSS';
-  global.DEBUG          = false;
+  global.DEBUG          = true;
   global.DONTDEBUGPING  = true;
   global.incomingUrl    = '';
   global.sessions       = [];
