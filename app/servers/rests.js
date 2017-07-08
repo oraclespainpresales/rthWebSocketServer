@@ -96,8 +96,10 @@ module.exports = function() {
 
       var orgTime = data.timestamp;
       data.steps.forEach((step) => {
-        step.stepDetails.startTime = moment(step.stepDetails.startTime).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-        step.stepDetails.deadline = moment(step.stepDetails.deadline).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+        step.stepDetails.forEach((detail) => {
+          detail.startTime = moment(detail.startTime).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+          detail.deadline = moment(detail.deadline).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');          
+        });
       });
 
       console.log(util.inspect(data, true, null));
