@@ -92,7 +92,7 @@ module.exports = function() {
     // Need to fix the lack of TIMEZONE settings in the treatment!
     if ( header.op === OPS.SYNCHRONIZE) {
 
-      console.log(data);
+      console.log(util.inspect(data, true, null));
 
       var orgTime = data.timestamp;
       data.steps.forEach((step) => {
@@ -100,7 +100,7 @@ module.exports = function() {
         step.stepDetails.deadline = moment(step.stepDetails.deadline).utcOffset(orgTime,true);
       });
 
-      console.log(data);
+      console.log(util.inspect(data, true, null));
 
     }
 
