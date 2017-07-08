@@ -96,8 +96,8 @@ module.exports = function() {
 
       var orgTime = data.timestamp;
       data.steps.forEach((step) => {
-        step.stepDetails.startTime = moment(step.stepDetails.startTime).utcOffset(orgTime,true);
-        step.stepDetails.deadline = moment(step.stepDetails.deadline).utcOffset(orgTime,true);
+        step.stepDetails.startTime = moment(step.stepDetails.startTime).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+        step.stepDetails.deadline = moment(step.stepDetails.deadline).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
       });
 
       console.log(util.inspect(data, true, null));
