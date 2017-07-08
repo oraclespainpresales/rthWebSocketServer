@@ -4,7 +4,7 @@ module.exports = function() {
     , url  = require('url')
     , misc = require('../../app/helpers/misc')()
     , uuid = require('node-uuid')
-    , time = require('time')
+    , moment = require('moment')
   ;
 
   onRestRequest = function(req, res) {
@@ -91,7 +91,11 @@ module.exports = function() {
 
     // Need to fix the lack of TIMEZONE settings in the treatment!
     if ( header.op === OPS.SYNCHRONIZE) {
-
+      var orgTime = request.data.timestamp;
+      request.data.steps.forEach((step) => {
+        step.stepDetails.startTime = moment(step.stepDetails.startTime).utcOffset(orgTime,true);
+        step.stepDetails.deadline = moment(step.stepDetails.deadline).utcOffset(orgTime,true);
+      });
     }
 
     var corrId = uuid.v1();
