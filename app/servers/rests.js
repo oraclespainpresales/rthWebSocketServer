@@ -91,19 +91,13 @@ module.exports = function() {
 
     // Need to fix the lack of TIMEZONE settings in the treatment!
     if ( header.op === OPS.SYNCHRONIZE) {
-
-      console.log(util.inspect(data, true, null));
-
       var orgTime = data.timestamp;
       data.steps.forEach((step) => {
         step.stepDetails.forEach((detail) => {
           detail.startTime = moment(detail.startTime).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-          detail.deadline = moment(detail.deadline).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');          
+          detail.deadline = moment(detail.deadline).utcOffset(orgTime,true).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
         });
       });
-
-      console.log(util.inspect(data, true, null));
-
     }
 
     var corrId = uuid.v1();
